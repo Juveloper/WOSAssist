@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Berechtigungen für Internet & Netzwerk -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Berechtigungen für Medienzugriff (Android 13 und niedriger) -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+    <!-- Zugriff auf Bilder -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+    <!-- Falls du auch auf Videos zugreifen möchtest -->
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+
+    <!-- Falls du auch auf Audio-Dateien zugreifen möchtest -->
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+
+    <!-- Berechtigung für Android 14+ zur Auswahl von Bildern -->
+    <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
+
+    <!-- Kamera wird als optionales Feature angegeben -->
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.WOSAssist"
+        tools:targetApi="34">
+
+        <!-- Startaktivität (MainActivity) -->
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.WOSAssist"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Login-Aktivität -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.WOSAssist" />
+
+        <!-- Auftrag erstellen -->
+        <activity
+            android:name=".CreateItemActivity"
+            android:exported="true"
+            android:theme="@style/Theme.WOSAssist"/>
+
+        <!-- Auftragsdetails anzeigen -->
+        <activity
+            android:name=".ViewItemsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.WOSAssist"/>
+
+        <!-- Detailansicht für einen einzelnen Auftrag -->
+        <activity
+            android:name=".DetailActivity"
+            android:exported="true"
+            android:theme="@style/Theme.WOSAssist"/>
+
+        <!-- Chat-Funktion -->
+        <activity
+            android:name=".ChatActivity"
+            android:exported="true"
+            android:theme="@style/Theme.WOSAssist"/>
+
+
+    </application>
+
+</manifest>
