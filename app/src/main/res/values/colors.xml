@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Standardfarben für Sicherheit -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorOnBackground">#FFFFFF</color>
+    <color name="colorSurface">#121212</color>
+    <color name="colorOnSurface">#FFFFFF</color>
+
+    <!-- Original-Material Farben (nicht entfernt, falls noch verwendet) -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="priceGreen">#39FF14</color> <!-- typisches Neon-Grün -->
+
+
+    <!-- Futuristische Farben -->
+    <color name="backgroundColor">#101222</color> <!-- Dunkel-Violett-Blau -->
+    <color name="colorPrimary">#00F0FF</color> <!-- Neon-Cyan -->
+    <color name="colorPrimaryVariant">#00B0C0</color> <!-- Abgedunkelt -->
+    <color name="colorSecondary">#FF00F0</color> <!-- Neonpink -->
+    <color name="accentYellow">#FFE600</color>
+    <color name="accentOrange">#FF6600</color>
+
+    <color name="cardBackground">#1A1D2E</color>
+    <color name="inputBackground">#1E2233</color>
+
+    <!-- Texte -->
+    <color name="textPrimary">#FFFFFF</color>
+    <color name="textSecondary">#B0B0B0</color>
+    <color name="textHint">#888888</color>
+
+    <!-- Für Light Mode -->
+    <color name="textPrimary_light">#000000</color>
+    <color name="textSecondary_light">#444444</color>
+    <color name="colorOnPrimary_light">#000000</color>
 </resources>

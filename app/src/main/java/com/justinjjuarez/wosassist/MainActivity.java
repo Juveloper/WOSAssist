@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,7 +27,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private RecyclerView recyclerView;
-    private ItemAdapter itemAdapter;
+    private MainOrderListAdapter itemAdapter;
     private List<Item> itemList;
     private EditText searchEditText;
 
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         auth = FirebaseAuth.getInstance();
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -45,23 +45,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         itemList = new ArrayList<>();
-        itemAdapter = new ItemAdapter(this, itemList);
+        itemAdapter = new MainOrderListAdapter(this, itemList);
         recyclerView.setAdapter(itemAdapter);
 
         loadItemsFromFirestore();
 
-        // Suchfunktion
         searchEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-                filterItems(charSequence.toString());
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterItems(s.toString());
             }
-
-            @Override
-            public void afterTextChanged(Editable editable) {}
+            @Override public void afterTextChanged(Editable s) {}
         });
     }
 
@@ -70,24 +64,19 @@ public class MainActivity extends AppCompatActivity {
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     itemList.clear();
-                    if (queryDocumentSnapshots.isEmpty()) {
-                        Toast.makeText(this, "Keine Aufträge gefunden.", Toast.LENGTH_SHORT).show();
-                    } else {
-                        for (DocumentSnapshot document : queryDocumentSnapshots) {
-                            Item item = document.toObject(Item.class);
-                            if (item != null) {
-                                item.setId(document.getId()); // Firestore-ID setzen
-                                itemList.add(item);
-                            }
+                    for (DocumentSnapshot document : queryDocumentSnapshots) {
+                        Item item = document.toObject(Item.class);
+                        if (item != null) {
+                            item.setId(document.getId());
+                            itemList.add(item);
                         }
                     }
-                    itemAdapter.updateItemList(itemList); // RecyclerView aktualisieren
+                    itemAdapter.updateList(itemList);
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Fehler beim Laden der Aufträge: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
     }
-
 
     private void filterItems(String query) {
         List<Item> filteredList = new ArrayList<>();
@@ -96,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 filteredList.add(item);
             }
         }
-        itemAdapter.updateItemList(filteredList);
+        itemAdapter.updateList(filteredList);
     }
 
     @Override
@@ -109,19 +98,18 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int itemId = item.getItemId(); // Speichert die ID des geklickten Elements
+        int itemId = item.getItemId();
 
-        if (itemId == R.id.action_login_logout) { // Direkter Vergleich mit der ID
+        if (itemId == R.id.action_login_logout) {
             if (auth.getCurrentUser() != null) {
                 auth.signOut();
                 Toast.makeText(this, "Abgemeldet", Toast.LENGTH_SHORT).show();
             } else {
                 startActivity(new Intent(this, LoginActivity.class));
             }
-            recreate(); // Aktualisiert die Activity
+            recreate();
             return true;
         }
 
@@ -137,5 +125,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }

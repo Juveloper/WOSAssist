@@ -22,7 +22,7 @@ public class ImagePagerAdapter extends RecyclerView.Adapter<ImagePagerAdapter.Im
     @NonNull
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_image, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_image_preview, parent, false);
         return new ImageViewHolder(view);
     }
 

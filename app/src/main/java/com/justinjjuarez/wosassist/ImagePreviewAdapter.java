@@ -12,15 +12,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
-    private List<Uri> imageUris;
+public class ImagePreviewAdapter extends RecyclerView.Adapter<ImagePreviewAdapter.ImageViewHolder> {
+    private final List<Uri> imageUris;
     private final Context context;
 
-    public ImageAdapter(List<Uri> imageUris, Context context) {
+    public ImagePreviewAdapter(List<Uri> imageUris, Context context) {
         this.imageUris = imageUris != null ? imageUris : new ArrayList<>();
         this.context = context;
     }
@@ -36,21 +37,30 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Uri imageUri = imageUris.get(position);
 
-        Log.d("WOSAssist", "Bild wird geladen: " + imageUri);
+        Log.d("WOSAssist", "🔄 onBindViewHolder() – Bild URI: " + imageUri);
 
+        // Extra Logging: URI prüfen
+        if (imageUri == null) {
+            Log.e("WOSAssist", "❌ URI an Position " + position + " ist NULL!");
+            return;
+        }
+
+        // Glide mit Debug-Optionen
         Glide.with(context)
                 .load(imageUri)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()
                 .into(holder.imageView);
-
     }
 
     @Override
     public int getItemCount() {
+        Log.d("WOSAssist", "📦 Anzahl Bilder im Adapter: " + imageUris.size());
         return imageUris.size();
     }
 
     public void updateImageList(List<Uri> newImageUris) {
+        Log.d("WOSAssist", "🔁 updateImageList() wurde aufgerufen. Neue Größe: " + (newImageUris != null ? newImageUris.size() : 0));
         imageUris.clear();
         if (newImageUris != null) {
             imageUris.addAll(newImageUris);
@@ -63,7 +73,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
         public ImageViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.image_view);
+            imageView = itemView.findViewById(R.id.image_preview_item);
+
         }
     }
 }

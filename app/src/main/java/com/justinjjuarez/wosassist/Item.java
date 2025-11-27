@@ -8,6 +8,7 @@ public class Item {
     private String description;
     private String location;
     private String date;
+    private String price; // NEU
     private List<String> orderPicture;
     private String userID;
 
@@ -15,11 +16,13 @@ public class Item {
         // Leerer Konstruktor für Firestore
     }
 
-    public Item(String title, String description,String location, String date, List<String> orderPicture, String userID) {
+    public Item(String title, String description, String location, String date, String price,
+                List<String> orderPicture, String userID) {
         this.title = title;
         this.description = description;
         this.location = location;
         this.date = date;
+        this.price = price; // NEU
         this.orderPicture = orderPicture;
         this.userID = userID;
     }
@@ -46,6 +49,14 @@ public class Item {
 
     public String getDate() {
         return date;
+    }
+
+    public String getPrice() {
+        return price; // NEU
+    }
+
+    public void setPrice(String price) {
+        this.price = price; // NEU
     }
 
     public List<String> getOrderPicture() {

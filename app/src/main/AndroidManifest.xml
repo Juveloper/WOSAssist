@@ -2,26 +2,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Berechtigungen für Internet & Netzwerk -->
+    <!-- Netzwerk-Zugriff -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <!-- Berechtigungen für Medienzugriff (Android 13 und niedriger) -->
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <!-- Medienzugriff (je nach Android-Version unterschiedlich) -->
 
-    <!-- Zugriff auf Bilder -->
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <!-- Android 12 und darunter -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <!-- Falls du auch auf Videos zugreifen möchtest -->
+    <!-- Android 13+ -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
-
-    <!-- Falls du auch auf Audio-Dateien zugreifen möchtest -->
     <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
 
-    <!-- Berechtigung für Android 14+ zur Auswahl von Bildern -->
+    <!-- Android 14+ (optional, nur wenn du gezielt selektierte Bilder brauchst) -->
     <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
 
-    <!-- Kamera wird als optionales Feature angegeben -->
+    <!-- Kamera nur optional -->
     <uses-feature android:name="android.hardware.camera" android:required="false" />
 
     <application
@@ -35,7 +33,7 @@
         android:theme="@style/Theme.WOSAssist"
         tools:targetApi="34">
 
-        <!-- Startaktivität (MainActivity) -->
+        <!-- MainActivity (Startbildschirm) -->
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.WOSAssist"
@@ -46,7 +44,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Login-Aktivität -->
+        <!-- Login -->
         <activity
             android:name=".LoginActivity"
             android:exported="true"
@@ -58,25 +56,23 @@
             android:exported="true"
             android:theme="@style/Theme.WOSAssist"/>
 
-        <!-- Auftragsdetails anzeigen -->
+        <!-- Aufträge anzeigen -->
         <activity
             android:name=".ViewItemsActivity"
             android:exported="true"
             android:theme="@style/Theme.WOSAssist"/>
 
-        <!-- Detailansicht für einen einzelnen Auftrag -->
+        <!-- Detailansicht -->
         <activity
             android:name=".DetailActivity"
             android:exported="true"
             android:theme="@style/Theme.WOSAssist"/>
 
-        <!-- Chat-Funktion -->
+        <!-- Chat -->
         <activity
             android:name=".ChatActivity"
             android:exported="true"
             android:theme="@style/Theme.WOSAssist"/>
 
-
     </application>
-
 </manifest>

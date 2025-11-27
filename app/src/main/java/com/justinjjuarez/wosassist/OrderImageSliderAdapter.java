@@ -10,24 +10,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import java.util.List;
 
-public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.ImageViewHolder> {
-    private Context context;
-    private List<String> imageUrls;
+public class OrderImageSliderAdapter extends RecyclerView.Adapter<OrderImageSliderAdapter.ViewHolder> {
+    private final Context context;
+    private final List<String> imageUrls;
 
-    public ImageSliderAdapter(Context context, List<String> imageUrls) {
+    public OrderImageSliderAdapter(Context context, List<String> imageUrls) {
         this.context = context;
         this.imageUrls = imageUrls;
     }
 
     @NonNull
     @Override
-    public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.order_item_layout_slider, parent, false);
-        return new ImageViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Glide.with(context).load(imageUrls.get(position)).into(holder.imageView);
     }
 
@@ -36,12 +36,11 @@ public class ImageSliderAdapter extends RecyclerView.Adapter<ImageSliderAdapter.
         return imageUrls.size();
     }
 
-    public static class ImageViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-
-        public ImageViewHolder(@NonNull View itemView) {
-            super(itemView);
-            imageView = itemView.findViewById(R.id.image_view);
+        public ViewHolder(View view) {
+            super(view);
+            imageView = view.findViewById(R.id.slider_image_view);
         }
     }
 }

@@ -5,18 +5,15 @@
     <item
         android:id="@+id/action_create_job"
         android:title="@string/create_job_button_text"
-        app:iconTint="@android:color/white"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_view_jobs"
         android:title="@string/view_jobs_button_text"
-        app:iconTint="@android:color/white"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_login_logout"
         android:title="@string/login_logout_button_text"
-        app:iconTint="@android:color/white"
         app:showAsAction="never" />
 </menu>

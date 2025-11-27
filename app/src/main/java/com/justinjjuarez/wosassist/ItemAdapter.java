@@ -19,12 +19,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
-public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.ItemViewHolder> {
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
 
     private List<Item> itemList;
     private Context context;
 
-    public OrderListAdapter(Context context, List<Item> itemList) {
+    public ItemAdapter(Context context, List<Item> itemList) {
         this.context = context;
         this.itemList = itemList;
     }
@@ -107,7 +107,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Item
             titleTextView = view.findViewById(R.id.title_text_view);
             descriptionTextView = view.findViewById(R.id.description_text_view);
             dateTextView = view.findViewById(R.id.date_text_view);
-            imageSlider = view.findViewById(R.id.image_slider);
+            imageSlider = view.findViewById(R.id.image_view);
             deleteButton = view.findViewById(R.id.delete_button);
         }
     }

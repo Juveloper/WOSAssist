@@ -75,5 +75,11 @@
     <!--item_layout.xml-->
     <string name="delete_button_text">Löschen</string>
 
+    <!-- main_order_item.xml -->
+    <string name="preview_image_content_description">Vorschaubild des Auftrags</string>
+    <string name="preview_title_text">Titel des Auftrags</string>
+    <string name="preview_description_text">Kurzbeschreibung</string>
+
+
 
 </resources>
