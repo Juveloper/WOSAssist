@@ -1,4 +1,3 @@
-/build
 # Android build
 /build/
 app/build/
@@ -25,10 +24,10 @@ local.properties
 *.ap_
 *.aab
 
-# Firebase secrets (falls vorhanden)
+# Firebase secrets
 app/google-services.json
 app/google-services.plist
 
-# Mac / Windows junk
+# OS junk
 .DS_Store
 Thumbs.db
