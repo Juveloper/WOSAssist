@@ -10,7 +10,7 @@
 - Firebase Realtime/Firestore backend (config excluded from repo)
 
 ## Screenshots
-![Main Screen](docs/images/screenshot-main.png)
+<img src="docs/images/A1_01_Startseite_und_Suchfeld.jpg" width="300">
 ![Create Order](docs/images/screenshot-create.png)
 
 > For a short demo video, see the Release assets or the linked unlisted YouTube video.
