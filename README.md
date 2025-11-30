@@ -2,6 +2,14 @@
 
 **WOSAssist** is an Android application designed to streamline order management. Users can securely sign in/out, create new orders (with image uploads), search for orders, and view order details. Firebase is used for authentication, Firestore, and Storage.
 
+## Demo Video
+
+A short demonstration of the app is available on YouTube:
+
+👉 **[https://youtube.com/shorts/0iee9Bed-s8?feature=share](https://youtube.com/shorts/0iee9Bed-s8?feature=share)**
+
+---
+
 ## Features
 
 * User authentication (sign in / sign out)
@@ -13,14 +21,11 @@
 ## Screenshots
 
 <img src="docs/images/A1_01_Startseite_und_Suchfeld.jpg" width="300">
-
 <img src="docs/images/A1_02_Auftragserstellung.jpg" width="300">
-
 <img src="docs/images/A1_03_Detailansicht.jpg" width="300">
-
 <img src="docs/images/A1_04_Anmeldeseite.jpg" width="300">
 
-> A short demo video can be found in the project Releases.
+---
 
 ## Tech Stack
 
